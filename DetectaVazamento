@@ -1,0 +1,46 @@
+
+#include <I2CIO.h>
+#include <LCD.h>
+#include <LiquidCrystal.h>
+#include <LiquidCrystal_I2C.h>
+#include <LiquidCrystal_SR.h>
+#include <LiquidCrystal_SR2W.h>
+#include <LiquidCrystal_SR3W.h>
+
+#include <Wire.h>
+
+// Inicializa o display no endereco 0x27
+// SCL (A5)
+// SDA (A4)
+LiquidCrystal_I2C lcd(0x27,2,1,0,4,5,6,7,3, POSITIVE);
+
+const int buzzer = 6;
+const int green  = 9;
+const int red  = 8;
+
+const int gas = 0;
+
+void setup() {
+  pinMode(buzzer, OUTPUT);
+  pinMode(green, OUTPUT);
+  pinMode(red, OUTPUT);
+  
+  lcd.begin(16, 2);
+  lcd.print(" QUANT. DE GAS");
+}
+
+void loop() {
+  delay(500);
+  
+  float value = analogRead(gas)/10.23;
+  bool goodStatus = value <= 40; // 40%
+  
+  digitalWrite(green, goodStatus);
+  digitalWrite(red, !goodStatus);
+  if(!goodStatus)tone(buzzer, 1000, 200);
+  
+  lcd.setCursor(4, 1);
+  lcd.print(value);
+  lcd.setCursor(9, 1);
+  lcd.print(" %");
+}
