@@ -34,7 +34,7 @@ void loop() {
   delay(500);
   
   float value = analogRead(gas)/10.23;
-  bool goodStatus = value <= 40; // 40%
+  bool goodStatus = value <= 40; // 45%
   
   digitalWrite(green, goodStatus);
   digitalWrite(red, !goodStatus);
