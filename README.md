@@ -1,10 +1,10 @@
 # SensorGasAp
  Detector de vazamento de gás
 
- Detecção de vazamentos de gás para apartamento
+ Sistema de detecção de vazamentos de gás para apartamento
 
  Materiais:
  Sensor de detecção de gás
  Display (opcional)
- Buzzer
+ Buzzer (opcional)
  Led (verde, amarelo e vermelho) 5mm (opcional)
