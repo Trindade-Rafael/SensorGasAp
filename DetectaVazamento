@@ -26,7 +26,7 @@ void setup() {
   pinMode(red, OUTPUT);
   
   lcd.begin(16, 2);
-  lcd.print(" QUANT. DE GAS");
+  lcd.print(" QTDE. DE GAS");
   
 }
 
@@ -34,7 +34,7 @@ void loop() {
   delay(500);
   
   float value = analogRead(gas)/10.23;
-  bool goodStatus = value <= 40; // 45%
+  bool goodStatus = value <= 40; // 40%
   
   digitalWrite(green, goodStatus);
   digitalWrite(red, !goodStatus);
